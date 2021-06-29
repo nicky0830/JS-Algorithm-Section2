@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function solution(a,b){
+        let answer =""; 
+        for(let i=0;i<a.length;i++){
+            if(a[i]===b[i]) answer+="D ";
+            else if(a[i]===2 && b[i]===1) answer+="A ";
+            else if(a[i]===3 && b[i]===2) answer+="A ";
+            else if(a[i]===1 && b[i]===3) answer+="A ";
+            else answer+="B ";    
+        }return answer;
+    }
+        let a1 = [2,3,3,1,3]
+        let a2 = [1,1,2,2,3]
+        console.log(solution(a1,a2))
+
+        // function solution(a, b){         
+        //         let answer="";
+        //         for(let i=0; i<a.length; i++){
+        //             if(a[i]===b[i]) answer+="D ";
+        //             else if(a[i]===1 && b[i]===3) answer+="A ";
+        //             else if(a[i]===2 && b[i]===1) answer+="A ";
+        //             else if(a[i]===3 && b[i]===2) answer+="A ";
+        //             else answer+="B ";
+        //         }
+                
+        //         return answer;
+        //     }
+
+        //     let a=[2, 3, 3, 1, 3];
+        //     let b=[1, 1, 2, 2, 3];
+        //     console.log(solution(a, b));
+
+     function solution(s){
+         //연속해서 답을 맞히는 경우 : 가산점 주기 위해 점수 계싼 
+         //1번 : 1점, XO이면 1점, OO면 O의 개수만큼, 틀린 문제는 0점 
+         //답이 맞으면 1점, 틀리면 0점  
+        for(let i=0;i<a.length;i++){
+            if(s[i]==="1"){
+                answer++;
+                if(s[i+1]==="1")answer++;
+           }
+        }
+    }
+
+        function solution(arr){          // answer와 더하는 다른 변수가 필요하다는 것을 인식하기!
+                let answer=0, cnt=0;
+                for(let x of arr){ 
+                    if(x===1){
+                        cnt++; //1을 만나면 1씩 커진다(연달아 1이 나온만큼 cnt가 된다)
+                        answer+=cnt;
+                    }
+                    else cnt=0; //만약 1이 아닌 0을 만나면 0이 되어 버린다
+                }  return answer;
+            }
+
+        let arr = "1 0 1 1 1 0 0 1 1 0"
+        let a = arr.split(" ")
+        console.log(a)
+        console.log(solution())
+    </script> 
+</body>
+</html>
