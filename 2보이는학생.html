@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script> 
+    function solution(s){
+        let answer =0, max= Number.MIN_SAFE_INTEGER;
+        for(let i=0;i<s.length-1;i++){
+            for(let j=1; j<s.length; j++){
+            if (s[i]>max) max = s[i];
+            if (s[j] > max) answer++;
+                 } 
+            }return answer;
+        }
+
+    //쌤 풀이
+        function solution(arr){         
+                let answer=1, max=arr[0]; 
+                for(let i=1; i<arr.length; i++){
+                    if(arr[i]>max){ 
+                        answer++;//이전 max보다 크니까 +
+                        max=arr[i]; //새로운 max로 지정
+                    }
+                }
+                return answer;
+            }
+
+    
+
+    
+    //앞에 선 사람들 중 가장 큰 사람보다 커야 함
+    //max를 갱신하면서 max보다 크면 ++
+
+    let str = [130, 135, 148, 140, 145, 150, 150, 153]
+    console.log(solution(str))
+    </script>
+    
+</body>
+</html>
