@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script> 
+    // #1.큰수출력 
+
+    function solution(s){
+        let answer = [s[0]];
+        for(let i=0;i<s.length;i++){
+            if(s[i]<s[i+1]) answer.push(s[i+1]); 
+        } 
+        return answer;
+    }
+    // let arr = [7,3,9,5,6,12];
+    // console.log(solution(arr));
+
+    //#2.보이는 학생
+    //내 풀이 오답: 1차이로 틀림 왜냐하면 s[0]을 안 셌음. 그러므로 max = s[0]으로 한다
+    function solution(s){
+        let answer=0,max=Number.MIN_SAFE_INTEGER;
+        //let answer=1, max = s[0];
+        for(let i=0;i<s.length;i++){
+            if(s[i]>max){
+            max = s[i]; 
+            answer++;} 
+            //s[0]일때는 안 크니가 안 바뀌지만 똑같다
+        }return answer;
+    }
+    // let arr2=[130,135,148,140,145,150,150,153];
+    // console.log(solution(arr2));
+
+    //#3.가위바위보 
+    function solution(s1,s2){
+        let answer = "";
+        for(let i=0;i<s1.length;i++){
+            if(s1[i]===s2[i]) answer+="D";
+            else if(s1[i]===2 && s2[i]===1) answer +="A";
+            else if(s1[i]===3 && s2[i]===2) answer +="A";
+            else if(s1[i]===1 && s2[i]===3) answer +="A";
+            else answer+="B";
+        }return answer;
+    }
+
+    // let a=[2, 3, 3, 1, 3];
+    // let b=[1, 1, 2, 2, 3];
+    // console.log(solution(a, b));
+
+    //#4.점수계산 
+    function solution(s){ 
+        let answer=0,cnt=0;
+        for(let x of s){ 
+            if(x===1){
+                cnt++;
+                answer+=cnt;
+            }else cnt=0;
+        } return answer;
+    }
+
+    // let arr = [1,0,1,1,1,0,0,1,1,0]
+    // console.log(solution(arr))
+
+    //#5.둥수구하기
+    function solution(s){
+        let index=1, answer=[]; 
+        // index 대신 초기화값이 1인 배열 answer를 만들 수 있다 
+        //answer = Array.from({length:s.length},()=>1) answer[i]++;
+        for(let i=0;i<s.length;i++){ 
+            index=1;
+            for(let j=0;j<s.length;j++){ 
+                if(s[i]<s[j]) index++;
+            }answer.push(index);
+        }return answer;     
+    }
+
+    // let arr = [87,89,92,100,76];
+    // console.log(solution(arr))
+
+    //#6.격자판 최대합 
+    function solution(s){
+        let hang=0,yeol=0,dae1=0,dae2=0, answer;
+        for(let i=0;i<s.length;i++){
+            hang=yeol=0;
+            for(let j=0;j<s.length;j++){ 
+                hang += s[i][j];
+                yeol += s[j][i];
+            }answer = Math.max(hang,yeol);
+        }
+
+            for(let i=0;i<s.length;i++){
+            dae1 += s[i][i];
+            dae2 += s[i][s.length-1-i];
+            }answer = Math.max(answer,dae1,dae2)
+         return answer;
+
+    }
+    // let arr=[[10, 13, 10, 12, 15], 
+    //                  [12, 39, 30, 23, 11],
+    //                  [11, 25, 50, 53, 15],
+    //                  [19, 27, 29, 37, 27],
+    //                  [19, 13, 30, 13, 19]];
+    //         console.log(solution(arr));
+
+    //#7.봉우리 
+    function solution(s){
+        let answer=0;
+        let flag=0;
+        let dx=dy=0;
+        let k1 = [-1,0,1,0];
+        let k2 = [0,-1,0,1];
+        for(let i=0;i<s.length;i++){ //arr의 원소
+            for(let j=0;j<s.length;j++){ //원소의 원소
+                for(let n=0;n<4;n++){
+                   //i,j 중 하나는 같고 다른 ㅐㅇ가 
+                    dx = i+k1[n]; //i-1,same/ i+1, same/ j+1, same/ j-1, same
+                    dy = j+k2[n];
+                    
+                    if(dx>= 0 && dx<s.length 
+                    && dy>=0 && dy<s.length 
+                    && s[i][j]>s[dx][dy])
+                    flag=1; 
+                    else flag=0;
+                    //for문을 통해 0~3까지 4번 반복 그러므로 *4가 된다
+            }console.log(flag);
+        }
+    } return answer;
+}
+
+    let arr=[[5, 3, 7, 2, 3],
+                     [3, 7, 1, 6, 1],
+                     [7, 2, 5, 3, 4],
+                     [4, 3, 6, 4, 1],
+                     [8, 7, 3, 5, 2]];
+
+    console.log(solution(arr))
+
+
+  
+
+
+    </script>
+    
+</body>
+</html>
